@@ -1,0 +1,9 @@
+# IntelliJ IDEA files and directories
+.idea/
+
+# Compiled Python files
+__pycache__/
+
+# Python environment files
+venv/
+env/
