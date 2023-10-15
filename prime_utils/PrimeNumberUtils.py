@@ -3,6 +3,7 @@ import random
 
 from decimal import Decimal, getcontext
 
+
 # Prime Numbers Checker Util Class
 class PrimeNumberUtils:
 
