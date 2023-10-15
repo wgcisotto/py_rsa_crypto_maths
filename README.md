@@ -5,6 +5,7 @@
 * [Introduction](#Introduction)
 * [Exercises](#Exercises)
   * [Exercise 1](#Exercise-1)
+    * [Solution 1](#Solution-1)
   * [Exercise 2](#Exercise-2)
   * [Exercise 3](#Exercise-3)
   * [Exercise 4](#Exercise-4)
@@ -45,10 +46,62 @@ There are other possible attacks, but they appear to be (though are not proved t
 A number p is defined as prime if and only if it is divisible by itself (and 1). Implement a method
 from scratch that allows to test primality of a number using trial and error method.
 
+### Solution 1
+
+For this solution I use a primality test using trial and error which is a deterministic approach 
+this approach is very slow compared with other approach, when trying to find large numbers  
+
+See: [Prime Number Utils](prime_utils/PrimeNumberUtils.py#L11) 
+
+To begin run:
+
+```shell
+python main.py 
+```
+
+````
+Welcome to RSA Algorithm Program
+
+(1) - Check prime number by Trial and Error
+(2) - Check prime number by  Miller-Rabin
+(3) - NOT DEFINED
+
+Choose one option: 1
+
+Type the number: 68340297256331
+
+68340297256331 is prime.
+
+Time taken to calculate the primality was: 0.828832 seconds
+
+````
+
 ## Exercise 2
 
 The technique that you used in the previous question is a bit a slow if you consider a big enough
 number (e.g. 10-digits). Can you think of any other way to improve it? Implement the new one.
+
+### Solution 2 
+
+For this solution I use a Miller Rabin which is a probabilistic approach which incorporate randomness. 
+
+````
+Welcome to RSA Algorithm Program
+
+(1) - Check prime number by Trial and Error
+(2) - Check prime number by  Miller-Rabin
+(3) - NOT DEFINED
+
+Choose one option: 2
+
+Type the number: 46571910589681
+
+46571910589681 is probably prime.
+
+Time taken to calculate the primality was: 0.000000 seconds
+
+````
+
 
 ## Exercise 3
 
@@ -78,6 +131,4 @@ using the public key (937513, 638471) and then check correctness of the algorith
 
 Can you describe how question 5 might be used to break RSA algorithm and recover the
 secret key?
-
-# Resolution
 
