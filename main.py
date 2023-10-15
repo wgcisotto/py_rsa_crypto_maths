@@ -52,7 +52,7 @@ def check_prime_number_miller_rabin(n):
     end_time = time.time()
     # Calculate the elapsed time in seconds
     elapsed_time = end_time - start_time
-    print(f"\nTime taken to calculate the primality was: {elapsed_time:.6f} seconds")
+    print(f"\nTime taken to calculate the primality was: {elapsed_time:.10f} seconds")
 
 
 def option_sel():

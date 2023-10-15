@@ -93,12 +93,11 @@ Welcome to RSA Algorithm Program
 (3) - NOT DEFINED
 
 Choose one option: 2
-
 Type the number: 46571910589681
 
 46571910589681 is probably prime.
 
-Time taken to calculate the primality was: 0.000000 seconds
+Time taken to calculate the primality was: 0.0009894371 seconds
 
 ````
 
