@@ -28,12 +28,16 @@ def main():
 def check_prime_number_trial_and_error(n):
     # Record the start time
     start_time = time.time()
-    print(PrimeNumberUtils.is_prime_by_trial_error(n))
+    is_prime = PrimeNumberUtils.is_prime_by_trial_error(n)
+    if is_prime:
+        print(f"\n{n} is prime.")
+    else:
+        print(f"\n{n} is not prime.")
     # Record the end time
     end_time = time.time()
     # Calculate the elapsed time in seconds
     elapsed_time = end_time - start_time
-    print(f"Time taken to calculate the primality was: {elapsed_time:.6f} seconds")
+    print(f"\nTime taken to calculate the primality was: {elapsed_time:.6f} seconds")
 
 
 def check_prime_number_miller_rabin(n):
@@ -41,14 +45,14 @@ def check_prime_number_miller_rabin(n):
     start_time = time.time()
     is_prime = PrimeNumberUtils.is_prime_by_miller_rabin(n)
     if is_prime:
-        print(f"{n} is probably prime.")
+        print(f"\n{n} is probably prime.")
     else:
-        print(f"{n} is not prime.")
+        print(f"\n{n} is not prime.")
     # Record the end time
     end_time = time.time()
     # Calculate the elapsed time in seconds
     elapsed_time = end_time - start_time
-    print(f"Time taken to calculate the primality was: {elapsed_time:.6f} seconds")
+    print(f"\nTime taken to calculate the primality was: {elapsed_time:.6f} seconds")
 
 
 def option_sel():
