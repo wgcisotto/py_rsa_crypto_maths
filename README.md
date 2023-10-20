@@ -1,5 +1,5 @@
 # The RSA Algorithm
-
+// TODO update this readme.
 ## Content
 
 * [Introduction](#Introduction)
@@ -7,6 +7,7 @@
   * [Exercise 1](#Exercise-1)
     * [Solution 1](#Solution-1)
   * [Exercise 2](#Exercise-2)
+    * [Solution 2](#Solution-2)
   * [Exercise 3](#Exercise-3)
   * [Exercise 4](#Exercise-4)
   * [Exercise 5](#Exercise-5)
@@ -48,8 +49,8 @@ from scratch that allows to test primality of a number using trial and error met
 
 ### Solution 1
 
-For this solution I use a primality test using trial and error which is a deterministic approach 
-this approach is very slow compared with other approach, when trying to find large numbers  
+In this solution, I employ a primality test that relies on trial and error. 
+This method follows a deterministic approach, but it's notably slower when dealing with large numbers compared to other more efficient methods.  
 
 See: [Prime Number Utils](prime_utils/PrimeNumberUtils.py#L11) 
 
@@ -83,7 +84,7 @@ number (e.g. 10-digits). Can you think of any other way to improve it? Implement
 
 ### Solution 2 
 
-For this solution I use a Miller Rabin which is a probabilistic approach which incorporate randomness. 
+I have employed the Miller-Rabin algorithm in this solution, which is a probabilistic method that involves randomness. 
 
 ````
 Welcome to RSA Algorithm Program
