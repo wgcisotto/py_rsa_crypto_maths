@@ -161,7 +161,7 @@ if __name__ == "__main__":
 
     public_key, private_key = generate_private_key(p1, p2)
     print("\nPublic key is (n={}, e={})".format(public_key[1], public_key[0]))
-    print("Private key is", private_key)
+    print("Private key is (n={}, d={})".format(private_key[1], private_key[0]))
 
     message = "public key already provided"
     ciphertext = encrypt(public_key, message)
@@ -174,7 +174,7 @@ if __name__ == "__main__":
 
     public_key, private_key = generate_keypair()
     print("\nPublic key is (n={}, e={})".format(public_key[1], public_key[0]))
-    print("Private key is", private_key)
+    print("Private key is (n={}, d={})".format(private_key[1], private_key[0]))
 
     message = "Random keys"
     ciphertext = encrypt(public_key, message)
