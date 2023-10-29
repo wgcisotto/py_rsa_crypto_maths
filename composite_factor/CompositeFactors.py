@@ -1,11 +1,5 @@
-import random
-
-
-def gcd(a, b):
-    # Calculate the greatest common divisor (GCD) of two numbers using Euclid's algorithm.
-    while b:
-        a, b = b, a % b
-    return a
+from euclid_algoritm.EuclidsAlgorithm import gcd
+import math
 
 
 def pollards_rho(n):
@@ -37,14 +31,21 @@ def pollards_rho(n):
 
 
 # Deterministic approach
-def factorize(n):
+def factorize(num):
+    """
+    Factorize a number into its prime factors.
+
+    Args:
+        num (int): The number to factorize.
+
+    Returns:
+        list: A list of prime factors.
+    """
     factors = []
-    div = 2  # Start with the smallest prime factor, which is 2
-
-    while n > 1:
-        while n % div == 0:
-            factors.append(div)
-            n //= div
-        div += 1
-
+    for i in range(2, int(math.sqrt(num)) + 1):
+        while num % i == 0:
+            factors.append(i)
+            num //= i
+    if num > 1:
+        factors.append(num)
     return factors
