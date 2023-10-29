@@ -1,6 +1,7 @@
 import random
 import math
 
+from composite_factor.CompositeFactors import factorize
 from prime_utils.PrimeNumberUtils import PrimeNumberUtils
 
 
@@ -82,26 +83,6 @@ def decrypt(privateKey, message):
     p = [chr((char ** d) % n) for char in message]
     # Return the array as a string
     return ''.join(p)
-
-
-def factorize(num):
-    """
-    Factorize a number into its prime factors.
-
-    Args:
-        num (int): The number to factorize.
-
-    Returns:
-        list: A list of prime factors.
-    """
-    factors = []
-    for i in range(2, int(math.sqrt(num)) + 1):
-        while num % i == 0:
-            factors.append(i)
-            num //= i
-    if num > 1:
-        factors.append(num)
-    return factors
 
 
 def random_select_relatively_prime(phi):
