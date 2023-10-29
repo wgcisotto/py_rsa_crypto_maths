@@ -1,9 +1,11 @@
 import time
 
 from composite_factor.CompositeFactors import pollards_rho, factorize
-from euclid_algoritm.EuclidsAlgorithm import euclid_hcf
+from euclid_algoritm.EuclidsAlgorithm import euclid_hcf, extended_gcd
 from prime_utils.PrimeNumberUtils import PrimeNumberUtils
 from decimal import Decimal
+
+from rsa.rsa import encrypt, decrypt, generate_private_key
 
 
 def main():
@@ -30,6 +32,16 @@ def main():
                 a = input('\nType the number One: ')
                 b = input('\nType the number Two: ')
                 hcf(Decimal(a), Decimal(b))
+            case "6":
+                a = input('\nType the number A (Integer): ')
+                b = input('\nType the number B (Modulo): ')
+                find_multiplicative_inverse(Decimal(a), Decimal(b))
+            case "7":
+                print('\nType the Public key numbers')
+                n = int(input('\nType the number (n): '))
+                e = int(input('Type the number(e): '))
+                message = input('\nType the message (m): ')
+                rsa_encryptor(n, e, message)
             case _:
                 print('Ops! Looks like you typed an incorrect option')
     except KeyboardInterrupt:
@@ -64,31 +76,28 @@ def check_prime_number_miller_rabin(n):
     # Calculate the elapsed time in seconds
     elapsed_time = end_time - start_time
     print(f"\nTime taken to calculate the primality was: {elapsed_time:.10f} seconds")
-    # Calculate the elapsed time in seconds
-    elapsed_time = end_time - start_time
-    print(f"\nTime taken to calculate the primality was: {elapsed_time:.6f} seconds")
 
 
 def deterministic_factors_of(n):
     # Record the start time
-    start_time = time.time()
+    start_time = time.perf_counter()
     factors = factorize(n)
-    print(f"Factors of {n}: {factors}")
+    print(f"\nFactors of {n}: {factors}")
     # Record the end time
-    end_time = time.time()
-    elapsed_time = end_time - start_time
-    print(f"\nTime taken to find the composite factors was: {elapsed_time:.6f} seconds")
+    end_time = time.perf_counter()
+    elapsed_time = (end_time - start_time) * 1000
+    print(f"\nTime taken to compute was: {elapsed_time:.6f} milliseconds")
 
 
 def probabilistic_factors_of(n):
     # Record the start time
-    start_time = time.time()
+    start_time = time.perf_counter()
     factors = pollards_rho(n)
-    print(f"Factors of {n}: {factors}")
+    print(f"\nFactors of {n}: {factors}")
     # Record the end time
-    end_time = time.time()
-    elapsed_time = end_time - start_time
-    print(f"\nTime taken to find the composite factors was: {elapsed_time:.6f} seconds")
+    end_time = time.perf_counter()
+    elapsed_time = (end_time - start_time) * 1000
+    print(f"\nTime taken to compute was: {elapsed_time:.6f} milliseconds")
 
 
 def hcf(a, b):
@@ -96,22 +105,48 @@ def hcf(a, b):
     # perf_counter provides more accurate timing measurements for very short computations.
     start_time = time.perf_counter()
     result = euclid_hcf(a, b)
-    print(f"HCF of {a} and {b}: {result}")
+    print(f"\nHCF of {a} and {b}: {result}")
     # Record the end time
     end_time = time.perf_counter()
     elapsed_time = (end_time - start_time) * 1000
     print(f"\nTime taken to compute was: {elapsed_time:.6f} milliseconds")
 
 
+def find_multiplicative_inverse(a, m):
+    gcd, x, y = extended_gcd(a, m)
+
+    if gcd != 1:
+        print("\nNo multiplicative inverse exists.")
+    else:
+        # Ensure x is positive and within the modulo m
+        x = (x % m + m) % m
+        print(f"\nThe multiplicative inverse of {a} modulo {m} is {x}.")
+
+
+def rsa_encryptor(n, e, message):
+    public_key, private_key = generate_private_key(n, e)
+    print("\nPublic key is (n={}, e={})".format(public_key[1], public_key[0]))
+    print("Private key is", private_key)
+    ciphertext = encrypt(public_key, message)
+    print("\nEncrypted message is:", ciphertext)
+    decrypted_message = decrypt(private_key, ciphertext)
+    print("Decrypted message is:", decrypted_message)
+    if decrypted_message == message:
+        print("\nIt worked!")
+
+
 def option_sel():
-    print('\n(1) - Check prime number by Trial and Error. (Deterministic)')
-    print('(2) - Check prime number by Miller-Rabin. (Probabilistic)')
-    print('(3) - Factorisation of composite number. (Deterministic)')
-    print('(4) - Factorisation of composite number by  Pollard`s Rho algorithm. (Probabilistic)')
-    print('(5) - highest common factor (HCF) - Euclid`s Algorithm ')
+    print('\n(1) - Check if a number is prime using Trial and Error (Deterministic)')
+    print('(2) - Check if a number is prime using the Miller-Rabin algorithm (Probabilistic)')
+    print('(3) - Factor a composite number into its prime factors (Deterministic)')
+    print('(4) - Factor a composite number using Pollard`s Rho algorithm (Probabilistic)')
+    print('(5) - Find the highest common factor (HCF) using Euclid`s Algorithm')
+    print('(6) - Solve for x in a linear congruence Ax ≡ 1 (mod B)')
+    print('(7) - Perform RSA Encryption and Decryption')
+
     option = input('\nChoose one option: ')
     try:
-        if int(option) < 1 or int(option) > 5:
+        if int(option) < 1 or int(option) > 7:
             return invalid_sel()
     except ValueError:
         return invalid_sel()
