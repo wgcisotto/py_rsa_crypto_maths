@@ -17,13 +17,11 @@ def generate_private_key(n, e):
     """
     factors = factorize(n)
     q, p = factors[0], factors[1]
-    n = q * p
 
-    d = e  # The public exponent is typically used as the private exponent.
-    inverse = mod_inverse(d, (q - 1) * (p - 1))
+    d = mod_inverse(e, (q - 1) * (p - 1))
 
     public_key = (e, n)
-    private_key = (inverse, n)
+    private_key = (d, n)
 
     return public_key, private_key
 
