@@ -1,7 +1,7 @@
 import time
 
 from composite_factor.CompositeFactors import pollards_rho, factorize
-from euclid_algoritm.EuclidsAlgorithm import euclid_hcf, extended_gcd
+from euclid_algoritm.EuclidsAlgorithm import gcd, extended_gcd
 from prime_utils.PrimeNumberUtils import PrimeNumberUtils
 from decimal import Decimal
 
@@ -104,7 +104,7 @@ def hcf(a, b):
     # Record the start time
     # perf_counter provides more accurate timing measurements for very short computations.
     start_time = time.perf_counter()
-    result = euclid_hcf(a, b)
+    result = gcd(a, b)
     print(f"\nHCF of {a} and {b}: {result}")
     # Record the end time
     end_time = time.perf_counter()
