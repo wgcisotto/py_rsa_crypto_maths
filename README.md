@@ -217,7 +217,7 @@ it is an invaluable tool.
 
 To solve X in `342952340x ≡ 1 (mod 4230493243)`
 
-We use  Euclid's algorithm to find the greatest common divisor (GCD) between the coefficients of 'x' (342952340) and the modulus (4230493243). 
+We use Euclid's algorithm to find the greatest common divisor (GCD) between the coefficients of 'x' (342952340) and the modulus (4230493243). 
 
 Once the GCD is determined, we check if it equals 1. If it does, it implies that a multiplicative inverse exists, and 'x' can be found using modular arithmetic. 
 Specifically, we can use the extended Euclidean algorithm to compute 'x.' This process will yield the unique solution that satisfies the given linear congruence, 
@@ -290,14 +290,37 @@ It worked!
 Can you describe how question 5 might be used to break RSA algorithm and recover the
 secret key?
 
-### Solution 6
+### Solution 7
 
-Breaking RSA by factoring N
-If an attacker can factor N to obtain p and q, then he or she can compute ϕ(N) and use the extended euclidean algorithm to compute 
-the private exponent d = e^−1modϕ(N). Since it is easy for a brute force search algorithm to find small factors of any integer by trial division, it is clear that p and q should be taken of roughly equal size.
+#### Introduction
+
+In an encryption system, the primary aim of an adversary is to uncover the original plaintext 'm' from the corresponding ciphertext. 
+When successful in doing so, we consider the system to have been compromised. When it comes to digital signatures, 
+the attacker's objective is to create counterfeit signatures. An even more formidable attack involves uncovering the private key 'd.' 
+Should this be accomplished, the attacker gains the ability to decrypt all ciphertexts and create fraudulent signatures with ease. 
+In such a scenario, the sole viable solution is to revoke the compromised key.
 
 
-Refs:
+#### Breaking RSA 
+
+Breaking RSA by Factoring N:
+
+If an attacker successfully factors the modulus 'N' into its prime factors 'p' and 'q, they can then calculate ϕ(N) and 
+employ the Extended Euclidean algorithm to compute the private exponent 'd' as 'e^−1 mod ϕ(N)'. To enhance the security of the system, 
+it is crucial that 'p' and 'q' are chosen to be of roughly equal size, as brute force algorithms can efficiently find small factors through trial division.
+
+When we have knowledge of ϕ(N) and the public key, which comprises the modulus 'n' and the encryption exponent 'e', 
+we can determine 'd' because 'd' represents the modular multiplicative inverse of 'e' modulo 'n'. Utilizing the Extended Euclidean algorithm to find 'e', we gain the ability to decode the encrypted message.
+
+It is important to note that having knowledge of ϕ(N) is mathematically equivalent to possessing the two prime factors of 'n' 
+(referred to as 'p' and 'q') because ϕ(N) equals '(p-1)(q-1)'. Thus, when we know 'N' and ϕ(N), we can deduce the following:
+
+n - ϕ(N) + 1 = pq - (p-1)(q-1) + 1 = pq - pq + p + q - 1 + 1 = p + q
+
+This information allows us to determine that 'n = pq' and 'n - ϕ(N) + 1 = p + q."
+
+
+##### References
 
 - https://www.nku.edu/~christensen/Mathematical%20attack%20on%20RSA.pdf
 - https://github.com/kaushikthedeveloper/GeeksforGeeks-python/blob/master/Scripts/RSA%20Algorithm%20(%20Encryption%20-%20Decryption%20).py#L47
