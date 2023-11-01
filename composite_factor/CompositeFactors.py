@@ -3,6 +3,34 @@ import math
 
 
 def pollards_rho(n):
+    """
+    Factorizes a positive integer 'n' using Pollard's Rho algorithm.
+
+    This function attempts to find the prime factors of 'n' by iteratively applying Pollard's Rho algorithm,
+    which is a probabilistic algorithm for integer factorization. It is particularly efficient for
+    factoring large composite numbers.
+
+    Parameters:
+    n (int): The positive integer to be factorized.
+
+    Returns:
+    List[int]: A list of prime factors of 'n' in ascending order.
+
+    Example:
+    >>> pollards_rho(35)
+    [5, 7]
+    >>> pollards_rho(143)
+    [11, 13]
+    >>> pollards_rho(19)
+    [19]
+
+    Note:
+    - The function may return the factors in an arbitrary order.
+    - If 'n' is a prime number, the function will return the prime number itself in a list.
+
+    Reference:
+    - Pollard, J. M. (1975). "A Monte Carlo method for factorization". BIT Numerical Mathematics, 15(3), 331-334.
+    """
     if n <= 1:
         return [n]
 
@@ -33,13 +61,33 @@ def pollards_rho(n):
 # Deterministic approach
 def factorize(num):
     """
-    Factorize a number into its prime factors.
+    Factorizes a positive integer 'num' into its prime factors.
+
+    This function decomposes a positive integer 'num' into its prime factors and returns them in a list.
+    It uses a simple trial division method to find the prime factors.
 
     Args:
         num (int): The number to factorize.
 
     Returns:
-        list: A list of prime factors.
+        list: A list of prime factors in ascending order.
+
+    Example:
+    >>> factorize(12)
+    [2, 2, 3]
+    >>> factorize(35)
+    [5, 7]
+    >>> factorize(143)
+    [11, 13]
+    >>> factorize(19)
+    [19]
+
+    Note:
+    - The function may return the prime factors in ascending order.
+    - If 'num' is a prime number, the function will return the prime number itself in a list.
+
+    Reference:
+    - No specific reference. This is a basic trial division method for factorization.
     """
     factors = []
     for i in range(2, int(math.sqrt(num)) + 1):
