@@ -87,7 +87,7 @@ from scratch that allows to test primality of a number using trial and error met
 In this solution, I employ a primality test that relies on trial and error. 
 This method follows a deterministic approach, but it's notably slower when dealing with large numbers compared to other more efficient methods.  
 
-See: [Prime Number Utils](prime_utils/PrimeNumberUtils.py#L11) 
+See: [Prime Number Utils](prime_utils/PrimeNumberUtils.py#L13) 
 
 > Select option 1
 
@@ -115,6 +115,8 @@ a probabilistic method that introduces randomness to determine whether a given n
 The algorithm conducts multiple rounds of testing using random values, enhancing accuracy while retaining a small margin of uncertainty due to its probabilistic nature. 
 The algorithm achieves a balance between computational efficiency and reliability, making it a practical choice for prime number verification in various applications.
 
+See: [Prime Number Utils](prime_utils/PrimeNumberUtils.py#L82) 
+
 > Select option 2
 
 ````
@@ -130,7 +132,6 @@ Time taken to calculate the primality was: 0.0010116100 seconds
 
 ````
 
-
 ## Exercise 3
 
 Based on the function built in Question 2, implement a function that returns the factorisation of
@@ -143,6 +144,8 @@ The function leverages the [Pollard's Rho algorithm](https://en.wikipedia.org/wi
 a powerful probabilistic method. Although it operates with some randomness, this algorithm excels in efficiently factoring numbers, 
 particularly those with large prime factors. It provides a reliable and efficient solution for this task, 
 despite its probabilistic nature.
+
+See: [CompositeFactors](composite_factor/CompositeFactors.py#L5)
 
 > Select option 4
 
@@ -168,7 +171,9 @@ b) hcf(5988737349, 578354589)
 
 ### Solution 4
 
-describe
+Implementation of Euclid's algorithm to calculate the greatest common divisor (GCD)
+
+See: [EuclidsAlgorithm](euclid_algoritm/EuclidsAlgorithm.py#L1)
 
 > Select option 5
 
@@ -223,6 +228,8 @@ Once the GCD is determined, we check if it equals 1. If it does, it implies that
 Specifically, we can use the extended Euclidean algorithm to compute 'x.' This process will yield the unique solution that satisfies the given linear congruence, 
 allowing us to find the multiplicative inverse efficiently.
 
+See: [EuclidsAlgorithm](euclid_algoritm/EuclidsAlgorithm.py#L33)
+
 > Select option 6
 
 ````
@@ -259,6 +266,8 @@ To find 'D,' I employed the 'generate_private_key' which:
 2. Then, 'factorize(n)' is called to find the prime factors 'P' and 'Q' of 'N.' This is done by the 'factorize' function, and in this case, it results in 'P' = 1069 and 'Q' = 877.
 3. Next, compute the modular inverse 'D' using the 'mod_inverse(e, (q - 1) * (p - 1))' function. 'E' remains the same, and I calculate (q - 1) * (p - 1) as (877 - 1) * (1069 - 1) = 876 * 1068 = 937488.
 4. Using 'mod_inverse(e, 937488),' you find that 'D' = 229703 is the modular multiplicative inverse of 'E' modulo 937488.
+
+See: [rsa](rsa/rsa.py#L137)
 
 To see it working: 
 
