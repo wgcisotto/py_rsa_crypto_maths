@@ -49,7 +49,13 @@ There are other possible attacks, but they appear to be (though are not proved t
 
 ### Using the program
 
-To start run:
+#### Requirements 
+
+requires Python 3.10 or a compatible version. 
+
+#### To start 
+
+run:
 
 ```shell
 python main.py 
