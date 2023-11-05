@@ -1,7 +1,7 @@
 import random
-import math
 
 from composite_factor.CompositeFactors import factorize
+from euclid_algoritm.EuclidsAlgorithm import gcd
 from prime_utils.PrimeNumberUtils import PrimeNumberUtils
 
 
@@ -97,7 +97,7 @@ def random_select_relatively_prime(phi):
     """
     while True:
         e = random.randrange(2, phi)
-        if math.gcd(e, phi) == 1:
+        if gcd(e, phi) == 1:
             return e
 
 
@@ -112,26 +112,10 @@ def mod_inverse(a, m):
     Returns:
         int: The modular inverse of a with respect to m.
     """
-    m0 = m
-    y = 0
-    x = 1
-    if m == 1:
-        return 0
-    while a > 1:
-        # q is quotient
-        q = a // m
-        t = m
-        m = a % m
-        a = t
-        t = y
-        # Update x and y
-        y = x - q * y
-        x = t
-        # Make x positive
-    if x < 0:
-        x = x + m0
-
-    return x
+    for x in range(1, m):
+        if (a * x) % m == 1:
+            return x
+    return None
 
 
 if __name__ == "__main__":
