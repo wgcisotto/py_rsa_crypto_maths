@@ -97,3 +97,8 @@ def factorize(num):
     if num > 1:
         factors.append(num)
     return factors
+
+
+if __name__ == "__main__":
+    n = 91
+    print("Factors of (", n, ") = ", factorize(n))

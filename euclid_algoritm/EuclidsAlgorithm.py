@@ -61,3 +61,9 @@ def extended_gcd(a, b):
     else:
         gcd, x, y = extended_gcd(b % a, a)
         return gcd, y - (b // a) * x, x
+
+
+if __name__ == "__main__":
+    p = 11
+    q = 5
+    print("extended gcd = ", extended_gcd(p-1, q-1))
