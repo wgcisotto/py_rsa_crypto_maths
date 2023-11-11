@@ -30,7 +30,7 @@ def phi(n):
     result = 1
     for i in range(2, n):
         if gcd(i, n) == 1:
-            print(i, " - Is relatively prime to ", 26)
+            print(i, " - Is relatively prime to ", n)
             result += 1
     return result
 
